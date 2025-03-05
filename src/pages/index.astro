@@ -1,11 +1,124 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { ResponsiveContainer } from "../components/layout/ResponsiveContainer";
+import { MainContainer } from "../components/layout/MainContainer";
+import { ServicesSection } from "../components/sections/ServicesSection";
+import { AboutSection } from "../components/sections/AboutSection";
+import { ContactForm } from "../components/sections/ContactForm";
+import { HeroSlider } from "../components/sections/HeroSlider";
+import { DonationSection } from "../components/sections/DonationSection";
+import { HeroContent } from "../components/sections/HeroContent";
+import { Footer } from "../components/layout/Footer";
+import { Navbar } from "../components/layout/Navbar";
+import "../styles/base.css";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Comunidad Terapéutica Dr. Sillworth</title>
+    <meta
+      name="description"
+      content="Centro especializado en tratamiento y rehabilitación de adicciones"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="mask-icon" href="/favicon.svg" color="#2D6BA6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global>
+      :root {
+        --background: #ffffff;
+        --text-primary: #111827;
+        --text-secondary: #4b5563;
+        --primary: #2d6ba6;
+        --primary-dark: #1e4b76;
+      }
+
+      html {
+        background-color: var(--background);
+        color: var(--text-primary);
+      }
+
+      body {
+        font-family: "Inter", "Roboto", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .app-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: var(--background);
+      }
+
+      main {
+        flex: 1 0 auto;
+      }
+
+      footer {
+        flex-shrink: 0;
+      }
+
+      * {
+        transition: all 0.2s ease-in-out;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuLinks = document.querySelectorAll('a[href^="#"]');
+
+        menuLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute("href") || "";
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest",
+              });
+
+              // Cerrar el menú móvil si está abierto
+              const mobileMenu = document.querySelector(
+                '[aria-label="Abrir menú"]'
+              );
+              if (
+                mobileMenu instanceof HTMLButtonElement &&
+                window.innerWidth < 768
+              ) {
+                mobileMenu.click();
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="app-container">
+      <Navbar client:load />
+      <main class="pt-14">
+        <div id="inicio" class="w-full">
+          <HeroSlider client:load />
+        </div>
+        <MainContainer client:load>
+          <HeroContent client:load />
+          <ServicesSection client:load />
+          <AboutSection client:load />
+          <DonationSection client:load />
+          <div id="formulario-contacto" class="-mx-[12.5%]">
+            <ContactForm client:load />
+          </div>
+        </MainContainer>
+      </main>
+      <Footer client:load />
+    </div>
+  </body>
+</html>
