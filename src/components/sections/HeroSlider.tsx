@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 const images = [
   {
-    url: '/slider/slide1.jpg',
+    url: '/slider/Slide1.jpg',
     alt: 'Centro de rehabilitación',
     caption: 'Instalaciones modernas y confortables'
   },
@@ -33,7 +33,7 @@ export const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[550px] overflow-hidden">
+    <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[550px] ">
       <AnimatePresence initial={false}>
         <motion.div
           key={currentIndex}
@@ -50,9 +50,9 @@ export const HeroSlider = () => {
               backgroundPosition: '50% 30%'
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70">
-              <div className="container mx-auto h-full flex items-center justify-center text-center px-4">
-                <div className="text-white max-w-4xl">
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/50">
+              <div className="container mx-auto h-full flex items-center justify-start text-left px-2">
+                <div className="text-white max-w-3xl">
                   <motion.h2
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
