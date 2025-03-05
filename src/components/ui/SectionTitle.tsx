@@ -1,22 +1,38 @@
-import type { FC } from 'react';
+import { motion } from 'framer-motion';
 
 interface SectionTitleProps {
   title: string;
   subtitle?: string;
 }
 
-export const SectionTitle: FC<SectionTitleProps> = ({ title, subtitle }) => {
+export const SectionTitle = ({ title, subtitle }: SectionTitleProps) => {
   return (
-    <div className="text-center mb-12">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent relative inline-block">
-        {title}
-        <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary/20 via-primary to-primary/20 transform scale-x-50 group-hover:scale-x-100 transition-transform duration-300"></div>
-      </h2>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="text-center mb-12 relative"
+    >
+      <div className="relative inline-block">
+        <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-900 via-cyan-600 to-cyan-900 bg-clip-text text-transparent relative z-10">
+          {title}
+        </h2>
+        
+        
+      </div>
+      
       {subtitle && (
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-gray-600 mt-4 max-w-2xl mx-auto text-lg"
+        >
           {subtitle}
-        </p>
+        </motion.p>
       )}
-    </div>
+    </motion.div>
   );
 }; 
