@@ -9,12 +9,18 @@ import vercel from '@astrojs/vercel/serverless';
 export default defineConfig({
   site: 'https://comunidadterapeutica.vercel.app',
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    imageService: true,
+    webAnalytics: {
+      enabled: true
+    },
+    speedInsights: {
+      enabled: true
+    }
+  }),
   integrations: [
     react(),
-    tailwind({
-      configPath: './tailwind.config.js'
-    }),
+    tailwind(),
     sitemap()
   ],
   
