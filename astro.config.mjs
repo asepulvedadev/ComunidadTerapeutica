@@ -13,8 +13,7 @@ export default defineConfig({
     }),
     sitemap()
   ],
-  site: 'https://comunidadterapeuticasillworth.com',
-  output: 'hybrid',
+  
   build: {
     assets: '_assets'
   },

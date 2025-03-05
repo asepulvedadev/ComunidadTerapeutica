@@ -26,7 +26,7 @@ export const HeroContent = () => {
         <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
           <iframe
             className="absolute inset-0 w-full h-full"
-            src="https://www.youtube.com/embed/dSWDB0vNmnI?autoplay=yes&controls=1&rel=0"
+            src="https://www.youtube.com/embed/dSWDB0vNmnI?autoplay=0&controls=1&rel=0"
             title="Video presentación Comunidad Terapéutica Dr. Sillworth"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
