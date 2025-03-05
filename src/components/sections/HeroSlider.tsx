@@ -33,7 +33,7 @@ export const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[550px] ">
+    <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[550px] mt-16">
       <AnimatePresence initial={false}>
         <motion.div
           key={currentIndex}

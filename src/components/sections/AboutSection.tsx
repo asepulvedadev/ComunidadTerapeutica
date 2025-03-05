@@ -1,96 +1,48 @@
 import { motion } from 'framer-motion';
-import { Shield, Award, Users } from 'lucide-react';
-
-const features = [
-  {
-    icon: Shield,
-    title: 'Experiencia Comprobada',
-    description: 'Más de 15 años ayudando a personas a recuperar el control de sus vidas.'
-  },
-  {
-    icon: Award,
-    title: 'Equipo Profesional',
-    description: 'Especialistas certificados en adicciones, psicología y terapia familiar.'
-  },
-  {
-    icon: Users,
-    title: 'Enfoque Integral',
-    description: 'Tratamiento personalizado que aborda aspectos físicos, emocionales y sociales.'
-  }
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5
-    }
-  }
-};
+import { SectionTitle } from '../ui/SectionTitle';
 
 export const AboutSection = () => {
   return (
-    <section id="nosotros" className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-          className="text-center mb-12"
-        >
-          <motion.h2 
-            variants={itemVariants}
-            className="text-3xl font-bold text-gray-900 mb-4"
+    <section id="nosotros" className="py-20 scroll-mt-20">
+      <div className="container mx-auto px-4">
+        <SectionTitle 
+          title="Sobre Nosotros" 
+          subtitle="Comprometidos con tu bienestar y recuperación"
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            Nuestra Experiencia Marca la Diferencia
-          </motion.h2>
-          <motion.p 
-            variants={itemVariants}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            <h3 className="text-2xl font-semibold mb-4 text-gray-800">
+              Nuestra Misión
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Nos dedicamos a proporcionar un ambiente seguro y acogedor donde cada persona puede encontrar su camino hacia la recuperación. Nuestro equipo de profesionales está comprometido con tu bienestar.
+            </p>
+            <h3 className="text-2xl font-semibold mb-4 text-gray-800">
+              Nuestra Visión
+            </h3>
+            <p className="text-gray-600">
+              Aspiramos a ser líderes en la rehabilitación y el tratamiento de adicciones, transformando vidas y familias a través de nuestro enfoque integral y compasivo.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="relative"
           >
-            En la Comunidad Terapéutica Dr. Sillworth, combinamos años de experiencia
-            con las técnicas más avanzadas en el tratamiento de adicciones.
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-8"
-        >
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <div className="flex items-center justify-center w-12 h-12 bg-primary-100 rounded-full mb-4 mx-auto">
-                <feature.icon className="w-6 h-6 text-primary-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+            <img
+              src="/about/about-image.jpg"
+              alt="Nuestro centro"
+              className="rounded-lg shadow-xl"
+            />
+          </motion.div>
+        </div>
       </div>
     </section>
   );
