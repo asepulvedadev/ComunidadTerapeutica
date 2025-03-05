@@ -16,7 +16,9 @@ export default defineConfig({
     },
     speedInsights: {
       enabled: true
-    }
+    },
+    includeFiles: ['**/*'],
+    maxDuration: 60
   }),
   integrations: [
     react(),
