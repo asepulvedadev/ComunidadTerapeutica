@@ -1,14 +1,14 @@
 {
-  "functions": {
-    "api/*.js": {
-      "runtime": "nodejs20.x"
-    },
-    "src/pages/**/*.{js,ts,jsx,tsx,astro}": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "framework": "astro"
+  "framework": "astro",
+  "functions": {
+    "api/*.js": {
+      "runtime": "@vercel/node@2.0.0"
+    },
+    "src/pages/**/*": {
+      "runtime": "@vercel/node@2.0.0"
+    }
+  }
 } 
